@@ -1,0 +1,10 @@
+# Usage: ansible-playbook -i init_hosts enable-root.yml --ask-become-pass
+---
+- hosts: servers
+  remote_user: "{{ COMMON_USER }}"
+  become: yes
+  become_user: root
+  become_method: sudo
+
+  roles:
+    - role: enable-root

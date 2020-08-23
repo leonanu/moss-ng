@@ -1,0 +1,33 @@
+#!/bin/bash
+
+ansible-playbook --version > /dev/null 2>&1
+
+if [ ! $? -eq 0 ];then
+  echo 'ansible-playbook command not found!'
+  exit 1
+fi
+
+if [ ! -z $1 ];then
+    case $1 in
+        '-T')
+            grep -r 'tags:' ./roles | uniq | cut -d ':' -f 3 | sort
+            ;;
+        '-h'|'--help')
+            echo 'Usage:'
+            echo '  configsys [-t TAG]'
+            echo ''
+            echo '-t TAGS    Run specific tag task.'
+            echo '-T         Show all tags.'
+            echo '-h         Show help.'
+            ;;
+        '-t')
+            ansible-playbook -t $2 ./configsys.yml
+            ;;
+        *)
+            echo 'Error!'
+            exit 1
+            ;;
+    esac
+else
+    ansible-playbook ./configsys.yml
+fi
