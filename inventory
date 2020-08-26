@@ -5,6 +5,7 @@
 ansible_connection=ssh
 ansible_port=22
 
+[all:vars]
 COMMON_USER=nanu
 ROOT_PASSWORD='$6$mysecretsalt$RA6cjSuXYsDXZ5GQtLK2L2zesYiM.h0SBxc/2WTsVVt.xMue011L3.rdjC.z7Sve7zELPyuV9m0HDl7//Aagd/'
 HOSTNAME=vm-{{ ansible_default_ipv4.address.split('.')[-1] }}
