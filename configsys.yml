@@ -2,6 +2,9 @@
 - hosts: servers
 
   roles:
+    - role: disable-selinux
+      when: ansible_distribution  == 'CentOS'
+
     - role: install-pkgs
 
     - role: set-hostname
