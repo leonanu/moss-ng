@@ -7,3 +7,14 @@
     state: present
   notify:
     - 'Restart sshd Service'
+
+- name: 'Disable SSH DNS Reverse Resolve'
+  tags: 'root-ssh'
+  lineinfile:
+    dest: '/etc/ssh/sshd_config'
+    regexp: '^#?UseDNS'
+    line: 'UseDNS no'
+    state: present
+  notify:
+    - 'Restart sshd Service'
+  when: ansible_distribution  == 'CentOS'
