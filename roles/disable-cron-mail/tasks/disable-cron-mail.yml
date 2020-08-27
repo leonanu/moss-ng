@@ -1,3 +1,12 @@
+- name: 'Check {{ ROOT_CRON }}'
+  tags: 'disable-cron-mail'
+  file:
+    name: "{{ ROOT_CRON }}"
+    state: touch
+    owner: root
+    group: root
+    mode: 0644 
+
 - name: 'Get root cron Content'
   tags: 'disable-cron-mail'
   shell:

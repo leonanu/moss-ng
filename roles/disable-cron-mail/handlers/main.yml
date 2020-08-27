@@ -1,5 +1,5 @@
 - name: 'Restart cron Service'
-  systemd:
-    name: cron
+  service:
+    name: "{{ SRVC_CRON }}"
     state: restarted
     enabled: yes
