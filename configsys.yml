@@ -38,6 +38,7 @@
     - role: opt-sysctl
 
     - role: set-bbr
+      when: ansible_distribution  == 'Ubuntu'
 
     - role: set-ipv6
 

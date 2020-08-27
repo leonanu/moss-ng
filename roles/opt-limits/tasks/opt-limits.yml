@@ -2,7 +2,7 @@
   tags: 'opt-limits'
   template:
     src: 'moss.conf.template'
-    dest: '/etc/security/limits.d/moss.conf'
+    dest: '/etc/security/limits.d/10-moss.conf'
     mode: 0644
 
 - name: 'Optimize Systemd Limits'
@@ -15,3 +15,5 @@
   with_items:
     - { 'regexp':'^#?DefaultLimitCORE=', 'line':'DefaultLimitCORE=100000' }
     - { 'regexp':'^#?DefaultLimitNOFILE=', 'line':'DefaultLimitNOFILE=100000' }
+  when: not (ansible_distribution  == 'CentOS' and
+        ansible_distribution_major_version == '6')
