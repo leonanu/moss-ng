@@ -11,6 +11,12 @@
 
     - role: set-timezone
 
+    - role: set-timesyncd
+      when: ansible_distribution  == 'Ubuntu'
+
+    - role: set-ntpdate
+      when: ansible_distribution  == 'CentOS'
+
     - role: remove-snapd
       when: ansible_distribution  == 'Ubuntu' and
             ansible_distribution_version == '20.04'
@@ -36,8 +42,6 @@
     - role: set-ipv6
 
     - role: opt-limits
-
-    - role: set-timesyncd
 
   tasks:
     - debug:
