@@ -12,17 +12,17 @@
     src: 'bashrc.template'
     dest: '/tmp/moss-bashrc'
     mode: 0644
-  when: not "# Moss - START" in bashrc.stdout_lines
+  when: not "# Moss - START" in task_output.stdout_lines
 
 - name: 'Append Extended Settings to bashrc'
   tags: 'set-bashrc'
   shell:
     cmd: 'cat /tmp/moss-bashrc >> {{ BASHRC }}'
-  when: not "# Moss - START" in bashrc.stdout_lines
+  when: not "# Moss - START" in task_output.stdout_lines
 
 - name: 'Clean tmp bashrc'
   tags: 'set-bashrc'
   file:
     path: '/tmp/moss-bashrc'
     state: absent
-  when: not "# Moss - START" in bashrc.stdout_lines
+  when: not "# Moss - START" in task_output.stdout_lines
