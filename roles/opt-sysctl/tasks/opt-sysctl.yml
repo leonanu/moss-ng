@@ -1,8 +1,8 @@
 - name: 'opt-sysctl'
   tags: 'opt-sysctl'
   template:
-    src: '100-moss-opt-sysctl.conf.template'
-    dest: '/etc/sysctl.d/100-moss-opt-sysctl.conf.conf'
+    src: 'moss-opt-sysctl.conf.template'
+    dest: '/etc/sysctl.d/moss-opt-sysctl.conf'
     mode: 0644
   notify:
     - 'Apply sysctl'
