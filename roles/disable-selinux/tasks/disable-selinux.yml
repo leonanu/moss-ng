@@ -1,4 +1,19 @@
-- name: 'Disable SELinux'
+- name: 'Disable SELinux - getenforce'
   tags: 'disable-selinux'
-  selinux:
-    state: disabled
+  shell:
+    cmd: 'getenforce'
+  register: task_output
+
+- name: 'Disable SELinux - setenforce'
+  tags: 'disable-selinux'
+  shell:
+    cmd: 'setenforce 0'
+  when: task_output.stdout == 'Enforcing'
+
+- name: 'Disable SELinux - Set Config File'
+  tags: 'disable-selinux'
+  lineinfile:
+    dest: '/etc/selinux/config'
+    regexp: '^SELINUX='
+    line: 'SELINUX=disabled'
+    state: present
