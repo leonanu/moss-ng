@@ -1,8 +1,8 @@
 - name: 'Optimize System Limits Config File'
   tags: 'opt-limits'
   template:
-    src: 'moss.conf.template'
-    dest: '/etc/security/limits.d/10-moss.conf'
+    src: '100-moss.conf.template'
+    dest: '/etc/security/limits.d/100-moss.conf'
     mode: 0644
 
 - name: 'Optimize Systemd Limits'
