@@ -1,3 +1,4 @@
 - name: 'Apply sysctl'
   shell:
     cmd: 'sysctl --system'
+  ignore_errors: yes
