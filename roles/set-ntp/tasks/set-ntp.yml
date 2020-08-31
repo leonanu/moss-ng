@@ -14,3 +14,4 @@
   with_sequence: start=0 end=3 stride=1
   notify:
     - 'Restart NTP service'
+  when: ansible_product_name != 'Alibaba Cloud ECS'
