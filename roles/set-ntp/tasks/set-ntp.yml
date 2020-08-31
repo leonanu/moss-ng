@@ -1,0 +1,16 @@
+- name: 'Install NTP Package'
+  tags: 'set-ntp'
+  package:
+    name: ntp
+    state: present
+  
+- name: 'Config /etc/ntp.conf'
+  tags: 'set-ntp'
+  lineinfile:
+    dest: '/etc/ntp.conf'
+    regexp: "^server {{ item }}.centos"
+    line: "server {{ item }}.cn.pool.ntp.org iburst"
+    state: present
+  with_sequence: start=0 end=3 stride=1
+  notify:
+    - 'Restart NTP service'

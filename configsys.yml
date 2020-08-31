@@ -14,7 +14,7 @@
     - role: set-timesyncd
       when: ansible_distribution  == 'Ubuntu'
 
-    - role: set-ntpdate
+    - role: set-ntp
       when: ansible_distribution  == 'CentOS'
 
     - role: remove-snapd

@@ -12,4 +12,3 @@ HOSTNAME=vm-{{ ansible_default_ipv4.address.split('.')[-1] }}
 TIMEZONE=Asia/Shanghai
 BBR=off
 IPV6=on
-NTP_SERVER='cn.pool.ntp.org'
