@@ -1,1 +1,1 @@
-NTP_SERVER: '0.cn.pool.ntp.org 1.cn.pool.ntp.org 2.cn.pool.ntp.org 3.cn.pool.ntp.org'
+NTP_SERVER: "{{ 'ntp1.aliyun.com ntp2.aliyun.com ntp3.aliyun.com ntp4.aliyun.com' if ansible_system_vendor == 'Alibaba Cloud' else '0.cn.pool.ntp.org 1.cn.pool.ntp.org 2.cn.pool.ntp.org 3.cn.pool.ntp.org' }}"

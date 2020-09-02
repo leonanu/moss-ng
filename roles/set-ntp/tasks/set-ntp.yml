@@ -14,4 +14,16 @@
   with_sequence: start=0 end=3 stride=1
   notify:
     - 'Restart NTP service'
-  #when: ansible_product_name != 'Alibaba Cloud ECS'
+  when: ansible_product_name != 'Alibaba Cloud ECS'
+
+- name: 'Config /etc/ntp.conf'
+  tags: 'set-ntp'
+  lineinfile:
+    dest: '/etc/ntp.conf'
+    #regexp: "^server {{ item }}.centos"
+    line: "server ntp{{ item }}.aliyun.com iburst"
+    state: present
+  with_sequence: start=1 end=4 stride=1
+  notify:
+    - 'Restart NTP service'
+  when: ansible_system_vendor == 'Alibaba Cloud'
