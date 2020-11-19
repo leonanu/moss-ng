@@ -1,0 +1,11 @@
+- name: 'Change YUM Base Repo for CentOS 7'
+  tags: 'change-repo-co7'
+  copy:
+    src: 'CentOS-Base.repo.co7'
+    dest: '/etc/yum.repos.d/CentOS-Base.repo'
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  when: ansible_distribution  == 'CentOS' and
+        ansible_distribution_major_version == '7'

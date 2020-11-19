@@ -5,7 +5,13 @@
     - role: disable-selinux
       when: ansible_distribution  == 'CentOS'
 
-    - role: install-pkgs
+    - role: install-pkgs-co7
+      when: ansible_distribution  == 'CentOS' and
+            ansible_distribution_major_version == '7'
+
+    - role: install-pkgs-u2004
+      when: ansible_distribution  == 'Ubuntu' and
+            ansible_distribution_version == '20.04'
 
     - role: set-hostname
 

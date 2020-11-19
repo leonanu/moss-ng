@@ -1,0 +1,11 @@
+- name: 'Install EPEL for CentOS 7'
+  tags: 'install-epel-co7'
+  copy:
+    src: 'epel.repo.co7'
+    dest: '/etc/yum.repos.d/epel.repo'
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  when: ansible_distribution  == 'CentOS' and
+        ansible_distribution_major_version == '7'

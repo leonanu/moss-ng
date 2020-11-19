@@ -1,0 +1,10 @@
+- name: 'Install Packages for CentOS 7'
+  tags: 'install-pkgs-co7'
+  yum:
+    name: "{{ PKGS }}"
+    state: present
+  register: task_output
+  when: ansible_distribution  == 'CentOS' and
+        ansible_distribution_major_version == '7'
+
+- debug: var=task_output.stdout_lines

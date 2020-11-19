@@ -1,0 +1,9 @@
+- name: 'YUM Update'
+  tags: 'system-update-co'
+  yum:
+    name: '*'
+    state: latest
+  register: task_output
+  when: ansible_distribution == 'CentOS'
+
+- debug: var=task_output.stdout_lines
