@@ -20,6 +20,12 @@
     cmd: 'cat /tmp/moss-bashrc >> {{ BASHRC }}'
   when: not "# Moss - START" in task_output.stdout_lines
 
+- name: 'Append Extended Settings to /root/.bashrc'
+  tags: 'set-bashrc'
+  shell:
+    cmd: 'cat /tmp/moss-bashrc >> /root/.bashrc'
+  when: not "# Moss - START" in task_output.stdout_lines
+
 - name: 'Clean tmp bashrc'
   tags: 'set-bashrc'
   file:

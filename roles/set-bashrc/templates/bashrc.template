@@ -1,12 +1,21 @@
 
 # Moss - START
+PS1="\[\e[33;40m\][\[\e[32;40m\]\u\[\e[37;40m\]@\h \[\e[34;40m\]\w\[\e[33;40m\]]\[\e[0m\]\\$ "
+ 
+HISTSIZE=10000
+HISTTIMEFORMAT="%F %T $(whoami) "
+ 
 alias vi='vim'
 alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias ll='ls -la'
-alias grep='grep --color'
 alias dstat='dstat -cdlmnpsy'
-export PROMPT_COMMAND='RETRN_VAL=$?;logger -p authpriv.debug "$(who -u am i): $(history 1 | sed "s/^[ ]*[0-9]+[ ]*//" ) [$PWD][$RETRN_VAL]"'
+ 
+GREP_OPTIONS="--color=auto"
+alias grep='grep --color'
+alias egrep='egrep --color'
+alias fgrep='fgrep --color'
+#export PROMPT_COMMAND='RETRN_VAL=$?;logger -p authpriv.debug "$(who -u am i): $(history 1 | sed "s/^[ ]*[0-9]+[ ]*//" ) [$PWD][$RETRN_VAL]"'
 # Moss - END
 
