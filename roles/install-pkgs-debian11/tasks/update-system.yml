@@ -1,0 +1,11 @@
+- name: 'APT Upgrade'
+  tags: 'system-update-debian'
+  apt:
+    upgrade: 'yes'
+    update_cache: yes
+    autoclean: yes
+    autoremove: yes
+  register: task_output
+  when: ansible_distribution == 'Debian'
+
+- debug: var=task_output.stdout_lines

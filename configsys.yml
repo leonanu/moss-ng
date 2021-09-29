@@ -13,6 +13,10 @@
       when: ansible_distribution  == 'Ubuntu' and
             ansible_distribution_version == '20.04'
 
+    - role: install-pkgs-debian11
+      when: ansible_distribution  == 'Debian' and
+            ansible_distribution_version == '11'
+
     - role: set-hostname
 
     - role: set-timezone

@@ -1,0 +1,4 @@
+- include: change-repo.yml
+  when: ansible_system_vendor != 'Alibaba Cloud'
+- include: install-pkgs.yml
+- include: update-system.yml

@@ -1,0 +1,11 @@
+- name: 'Change APT Repository Souce List for Debian 11'
+  tags: 'change-repo-debian11'
+  copy:
+    src: 'source.list.debian11'
+    dest: '/etc/apt/sources.list'
+    backup: yes
+    mode: 0644
+    owner: root
+    group: root
+  when: ansible_distribution  == 'Debian' and 
+        ansible_distribution_version == '11'
